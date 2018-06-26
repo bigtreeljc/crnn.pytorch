@@ -6,9 +6,8 @@ from PIL import Image
 
 import models.crnn as crnn
 
-
 model_path = './data/crnn.pth'
-img_path = './data/demo.png'
+img_path = './data/out.png'
 alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
 
 model = crnn.CRNN(32, 1, 37, 256)

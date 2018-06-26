@@ -4,4 +4,13 @@
 *.pyo
 *.log
 *.tmp
-
+*.swn
+*.swo
+crnn/*
+CTC_TF/*
+warp-ctc/*
+*/__pycache__/*
+*.swp
+*.jpg
+*.png
+*.jpg.bk

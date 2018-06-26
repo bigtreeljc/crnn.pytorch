@@ -1,9 +1,9 @@
 import torch.nn as nn
-
+from typing import List
 
 class BidirectionalLSTM(nn.Module):
 
-    def __init__(self, nIn, nHidden, nOut):
+    def __init__(self, nIn: int, nHidden: int, nOut: int):
         super(BidirectionalLSTM, self).__init__()
 
         self.rnn = nn.LSTM(nIn, nHidden, bidirectional=True)
@@ -11,6 +11,9 @@ class BidirectionalLSTM(nn.Module):
 
     def forward(self, input):
         recurrent, _ = self.rnn(input)
+        ######
+        # h is the base size
+        ######
         T, b, h = recurrent.size()
         t_rec = recurrent.view(T * b, h)
 
@@ -19,10 +22,11 @@ class BidirectionalLSTM(nn.Module):
 
         return output
 
-
 class CRNN(nn.Module):
 
-    def __init__(self, imgH, nc, nclass, nh, n_rnn=2, leakyRelu=False):
+    def __init__(self, 
+            imgH: int, nc: int, nclass: int, 
+            nh: int, n_rnn: int=2, leakyRelu: bool=False):
         super(CRNN, self).__init__()
         assert imgH % 16 == 0, 'imgH has to be a multiple of 16'
 
